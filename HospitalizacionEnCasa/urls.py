@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from hecApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('rol/', views.RolListCreateView.as_view()),
+    path('rol/<int:pk>/', views.RolRetrieveView.as_view()),
 ]
