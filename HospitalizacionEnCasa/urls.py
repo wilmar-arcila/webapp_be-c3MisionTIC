@@ -19,6 +19,9 @@ from hecApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.LandingView.as_view()),
     path('rol/', views.RolListCreateView.as_view()),
-    path('rol/<int:pk>/', views.RolRetrieveView.as_view()),
+    path('rol/<str:pk>/', views.RolRetrieveDestroyView.as_view()),
+    path('user/', views.UsuarioListCreateView.as_view()),
+    path('user/<int:pk>/', views.UsuarioRetrieveDestroyView.as_view()),
 ]
