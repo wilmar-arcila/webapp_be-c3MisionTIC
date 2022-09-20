@@ -30,11 +30,11 @@ class UserManager(BaseUserManager):
 
 class Usuario(AbstractBaseUser, PermissionsMixin):
     id        = models.BigAutoField(primary_key=True)
-    rol_id    = models.ForeignKey(Rol, related_name='%(class)s_id', on_delete=models.CASCADE)
+    rol       = models.ForeignKey(Rol, related_name='_rol', to_field='tipo_usuario', on_delete=models.CASCADE)
     password  = models.CharField('Password', max_length = 256)
     nombre    = models.CharField('Nombre', max_length = 30)
     apellido  = models.CharField('Apellido', max_length = 30)
-    celular   = models.IntegerField('Celular')
+    celular   = models.CharField('Celular', max_length = 30)
     direccion = models.CharField('Direccion', max_length = 256)
     email     = models.EmailField('Email', max_length = 100, unique=True)
 
@@ -43,4 +43,5 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         self.password = make_password(self.password, some_salt)
         super().save(**kwargs)
         objects = UserManager()
+    
     USERNAME_FIELD = 'email'
