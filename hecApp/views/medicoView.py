@@ -3,7 +3,6 @@ from rest_framework.response import Response
 #from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from hecApp.serializers.medicoSerializer import MedicoSerializer
 from hecApp.serializers.usuarioSerializer import UsuarioSerializer
-from hecApp.models.usuario import Usuario
 from hecApp.models.medico import Medico
 
 class MedicoListCreateView(generics.ListCreateAPIView):
