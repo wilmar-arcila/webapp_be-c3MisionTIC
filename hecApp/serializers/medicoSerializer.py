@@ -7,8 +7,3 @@ class MedicoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Medico
         fields = ['id', 'especialidad', 'usuario']
-
-    def create(self, validated_data):
-        print("create medico")
-        print(validated_data)
-        return super().create(validated_data)

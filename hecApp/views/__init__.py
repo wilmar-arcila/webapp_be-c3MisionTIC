@@ -1,4 +1,5 @@
 from .rolView import RolListCreateView, RolRetrieveDestroyView
 from .landingView import LandingView
-from .usuarioView import UsuarioListCreateView, UsuarioRetrieveDestroyView
-from .medicoView import MedicoListCreateView, MedicoRetrieveDestroyView
+from .usuarioView import UsuarioListView, UsuarioRetrieveUpdateDestroyView
+from .medicoView import MedicoListCreateView, MedicoRetrieveUpdateView
+from .enfermeroView import EnfermeroListCreateView, EnfermeroRetrieveUpdateView
