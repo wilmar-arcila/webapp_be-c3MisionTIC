@@ -24,4 +24,6 @@ urlpatterns = [
     path('rol/<str:pk>/', views.RolRetrieveDestroyView.as_view()),
     path('user/', views.UsuarioListCreateView.as_view()),
     path('user/<int:pk>/', views.UsuarioRetrieveDestroyView.as_view()),
+    path('medico/', views.MedicoListCreateView.as_view()),
+    path('medico/<int:pk>/', views.MedicoRetrieveDestroyView.as_view()),
 ]

@@ -45,3 +45,6 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         objects = UserManager()
     
     USERNAME_FIELD = 'email'
+
+    def __str__(self) -> str:
+        return "USUARIO\nid: " + str(self.id) +"\nnombre: " + self.nombre + "\nemail: " + self.email
