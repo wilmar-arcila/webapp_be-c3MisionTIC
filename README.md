@@ -21,7 +21,19 @@ DB_USER=???      # Usuario de la base de datos
 DB_PASSWORD=???  # Contraseña para el ususario de la base de datos
 ```
 ---
+## ERD
+![Modelo relacional](assets/ERDDiagram_v2.svg)
 
+---
+## ToDo
+- [x] Setup inicial del proyecto
+- [x] Endpoints de prueba (Rol y Usuario)
+- [ ] Incluir el código de JWT (autenticación)
+- [x] Endpoints para las entidades principales sin updates (PUT, PATCH)
+- [ ] Updates para las diferentes entidades (PUT, PATCH)
+- [ ] Endpoints para las entidades puente
+---
 ### Notas
 Para verificar las librerias desactualizadas en el entorno virtual usar `pip list --outdated`, y para actualizarlas a la última versión `pip install -U package_name`.  
 Para actualizar el *listado* de librerias instaladas en el entorno virtual usar `pip freeze > requirements.txt`.
+Para instalar todas las dependencias `pip install -r requirements.txt`.
