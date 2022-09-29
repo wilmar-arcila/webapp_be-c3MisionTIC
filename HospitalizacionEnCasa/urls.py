@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from hecApp import views
 
 urlpatterns = [
+    path('login/', TokenObtainPairView.as_view()),
+    path('refresh/', TokenRefreshView.as_view()),
     path('admin/', admin.site.urls),
     path('', views.LandingView.as_view()),
     path('rol/', views.RolListCreateView.as_view()),

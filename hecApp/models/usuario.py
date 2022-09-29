@@ -5,13 +5,13 @@ from django.contrib.auth.hashers import make_password
 from hecApp.models.rol import Rol
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, password=None):
+    def create_user(self, email, password=None):
         """
         Creates and saves a user with the given username and password.
         """
-        if not username:
+        if not email:
             raise ValueError('Users must have an username')
-        user = self.model(username=username)
+        user = self.model(email=email)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -38,6 +38,8 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     direccion = models.CharField('Direccion', max_length = 256)
     email     = models.EmailField('Email', max_length = 100, unique=True)
 
+    objects = UserManager()
+    
     def save(self, **kwargs):
         some_salt = 'mMUj0DrIK7vgTdIYwpkIxN'
         self.password = make_password(self.password, some_salt)
