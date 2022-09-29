@@ -1,6 +1,10 @@
+from django.conf import settings
+
 from rest_framework import generics, status
-from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework_simplejwt.backends import TokenBackend
+
 from hecApp.serializers.usuarioSerializer import UsuarioSerializer
 from hecApp.models.usuario import Usuario
 
@@ -11,12 +15,19 @@ class UsuarioListView(generics.ListAPIView):
 
     def list(self, request):
         print("GET a todos los usuarios")
-        print(request.user) # Información del usuario asociada a la petición
-        print(request.auth) # Token usado para la petición
-        user=Usuario.objects.get(id=request.user.id)
+
+        # Obtención del ROL del usuario
+        print(request.user)  # Información del usuario asociada a la petición
+        token = request.auth # Token usado para la petición
+        print(token)
+        tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
+        valid_data = tokenBackend.decode(str(token),verify=False)
+        print(valid_data)        
+        user=Usuario.objects.get(id=valid_data['user_id'])
         rol = user.rol
         print(rol)
-        if (rol.tipo_usuario=='AUX'):
+
+        if (rol.tipo_usuario=='MD'):           # Verificación de permisos
             queryset = self.get_queryset()
             serializer = UsuarioSerializer(queryset, many=True)
             return Response(serializer.data)
